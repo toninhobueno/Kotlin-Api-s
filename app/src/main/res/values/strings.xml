@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MeusContatos</string>
+    <string name="iv_description">descrição da imagem</string>
 </resources>
