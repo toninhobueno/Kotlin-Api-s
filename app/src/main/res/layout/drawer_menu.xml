@@ -7,14 +7,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:openDrawer="start"
     >
-    
     <include layout="@layout/activity_main"/>
-    
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/menu"/>
+        android:layout_gravity="start">
 
+</com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
