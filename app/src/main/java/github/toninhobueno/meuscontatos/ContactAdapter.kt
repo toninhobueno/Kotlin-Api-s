@@ -9,14 +9,14 @@ import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 
 // Recycler view com seus construtores
-class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHolder>() {
+class ContactAdapter (var listener: ClickItemContactListener) : RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHolder>() {
 
     private val list: MutableList<Contact> = mutableListOf()
 
     //Infla o layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactAdapterViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.contact_item,parent,false)
-        return ContactAdapterViewHolder(view)
+        return ContactAdapterViewHolder(view,list,listener)
     }
 
     //altera a posição baseado no cursor
@@ -37,10 +37,18 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHol
     }
 
     //Adapter recebe os itens do cardview
-    class ContactAdapterViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ContactAdapterViewHolder (itemView: View, var list: List<Contact>, var listener: ClickItemContactListener  ) :
+        RecyclerView.ViewHolder(itemView){
         private  val tvName : TextView = itemView.findViewById(R.id.tv_name)
         private  val tvPhone : TextView = itemView.findViewById(R.id.tv_phone)
         private  val ivPhotograph : ImageView = itemView.findViewById(R.id.iv_photograph)
+
+
+        init {
+            itemView.setOnClickListener{
+                listener.clickItemContact(list[adapterPosition])
+            }
+        }
 
         fun bind(contact : Contact){
             tvName.text = contact.name
