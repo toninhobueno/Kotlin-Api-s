@@ -42,6 +42,7 @@
         <TextView
             android:id="@+id/tv_phone"
             android:layout_marginLeft="16dp"
+            style="@style/TextViewDefault"
             android:textSize="14sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
